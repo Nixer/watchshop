@@ -1,5 +1,6 @@
 # Ignore Git here
 .git
+__pycache__
 
 # But not these files...
-!.gitignore
+# !.gitignore
