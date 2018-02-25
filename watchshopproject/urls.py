@@ -16,8 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from watchshopapp import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('watchshop/sign-in/', auth_views.login,
+         {'template_name': 'watchshop/sign_in.html'},
+         name='watchshop-sign-in'),
+    path('watchshop/sign-out/', auth_views.logout,
+         {'next_page': '/'},
+         name='watchshop-sign-out'),
+    path('watchshop/', views.watchshop_home, name='watchshop-home'),
+    path('watchshop/sign-up/', views.watchshop_sign_up, name='watchshop-sign-up')
 ]

@@ -1,5 +1,7 @@
 # Ignore Git here
 .git
+.idea
+.gitignore
 
 # But not these files...
 # !.gitignore
