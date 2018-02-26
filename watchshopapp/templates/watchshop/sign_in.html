@@ -1,10 +1,10 @@
 {% extends 'base_signup.html' %}
 {% block title %}Sign In{% endblock %}
-{% block heading %}Watch Shop - Sign In page{% endblock %}
+{% block heading %}Watch Shop - Sign In{% endblock %}
 {% block content %}
-    <form method="POST">
+    <form class="card-text" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-red float-right">Login</button>
     </form>
 {% endblock %}
