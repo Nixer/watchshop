@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from watchshopapp.forms import  UserForm, WatchShopForm
 
 
 # Create your views here.
@@ -13,5 +14,10 @@ def watchshop_home(request):
 
 
 def watchshop_sign_up(request):
-    return render(request, 'watchshop/sign_up.html', {})
+    user_form = UserForm()
+    watchshop_form = WatchShopForm()
+    return render(request, 'watchshop/sign_up.html', {
+        'user_form': user_form,
+        'watchshop_form': watchshop_form
+    })
 
