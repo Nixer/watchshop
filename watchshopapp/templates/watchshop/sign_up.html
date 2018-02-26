@@ -10,7 +10,7 @@
 </head>
 <body>
     <h2>User registration page</h2>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.as_p }}
         {{ watchshop_form.as_p }}
