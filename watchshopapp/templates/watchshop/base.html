@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block page %}
+    <h2>Watch shop</h2>
+{% endblock %}
+{% block sidebar %}
+    Hi, {{ request.user }}
+    <hr/>
+    <a href="{% url 'watchshop-account' %}">Account profile</a>
+    -
+    <a href="{% url 'watchshop-watch' %}">Watches</a>
+{% endblock %}

@@ -15,6 +15,16 @@ def watchshop_home(request):
     return render(request, 'watchshop/home.html', {})
 
 
+@login_required(login_url='/watchshop/account/')
+def watchshop_account(request):
+    return render(request, 'watchshop/account.html', {})
+
+
+@login_required(login_url='/watchshop/watch/')
+def watchshop_watch(request):
+    return render(request, 'watchshop/watch.html', {})
+
+
 def watchshop_sign_up(request):
     user_form = UserForm()
     watchshop_form = WatchShopForm()

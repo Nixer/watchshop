@@ -30,5 +30,7 @@ urlpatterns = [
          {'next_page': '/'},
          name='watchshop-sign-out'),
     path('watchshop/', views.watchshop_home, name='watchshop-home'),
-    path('watchshop/sign-up/', views.watchshop_sign_up, name='watchshop-sign-up')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('watchshop/sign-up/', views.watchshop_sign_up, name='watchshop-sign-up'),
+    path('watchshop/account/', views.watchshop_account, name='watchshop-account'),
+    path('watchshop/watch/', views.watchshop_watch, name='watchshop-watch'),
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
