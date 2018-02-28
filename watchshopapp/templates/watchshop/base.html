@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
-{% block page %}
-    <h2>Watch shop</h2>
-{% endblock %}
+{% block title %}Watch shop{% endblock %}
 {% block sidebar %}
-    Hi, {{ request.user }}
-    <hr/>
-    <a href="{% url 'watchshop-account' %}">Account profile</a>
-    -
-    <a href="{% url 'watchshop-watch' %}">Watches</a>
+    <div class="text-center">
+        <img class="rounded-circle" src="{{ MEDIA_URL }}{{ request.user.watchshop.logo }}" width="70" height="70">
+        <br/>
+        <br/>
+        <h4>Hello, {{ request.user.get_full_name }}</h4>
+        <h5>{{ request.user.watchshop.name }}</h5>
+    </div>
+    <div class="list-group">
+        <span class="text-uppercase">Panel</span>
+        <a href="{% url 'watchshop-watch' %}" class="list-group-item">Watches</a>
+        <span class="text-uppercase">Profile</span>
+        <a href="{% url 'watchshop-account' %}" class="list-group-item">Account profile</a>
+    </div>
+    <br/>
+    <div class="text-center">
+        <a href="{% url 'watchshop-sign-out' %}?next={{ request.path }}" class="btn btn-red">Log Out</a>
+    </div>
 {% endblock %}

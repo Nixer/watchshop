@@ -1,11 +1,18 @@
 {% extends 'base_signup.html' %}
+{% load bootstrap4 %}
 {% block title %}Sign In{% endblock %}
 {% block heading %}Watch Shop - User registration page{% endblock %}
 {% block content %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ watchshop_form.as_p }}
+        <h3>Shop Owner</h3>
+        <hr/>
+        {% bootstrap_form user_form %}
+        <br/>
+        <h3>Watch Shop</h3>
+        <hr/>
+        {% bootstrap_form watchshop_form %}
         <button type="submit" class="btn btn-red float-right">Sign Up</button>
     </form>
+    <a href="{% url 'watchshop-sign-in' %}">Sign In as registered user</a>
 {% endblock %}

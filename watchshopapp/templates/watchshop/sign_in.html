@@ -1,10 +1,12 @@
 {% extends 'base_signup.html' %}
+{% load bootstrap4 %}
 {% block title %}Sign In{% endblock %}
 {% block heading %}Watch Shop - Sign In{% endblock %}
 {% block content %}
     <form class="card-text" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% bootstrap_form form %}
         <button type="submit" class="btn btn-red float-right">Login</button>
     </form>
+    <a href="{% url 'watchshop-sign-up' %}">Register Watchshop</a>
 {% endblock %}
