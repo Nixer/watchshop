@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from watchshopapp.forms import UserForm, WatchShopForm
+from watchshopapp.forms import UserForm, WatchShopForm, UserFormForEdit
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
@@ -12,12 +12,26 @@ def home(request):
 
 @login_required(login_url='/watchshop/sign-in/')
 def watchshop_home(request):
-    return render(request, 'watchshop/home.html', {})
+    return redirect(watchshop_watch)
 
 
 @login_required(login_url='/watchshop/account/')
 def watchshop_account(request):
-    return render(request, 'watchshop/account.html', {})
+    user_form = UserFormForEdit(instance=request.user)
+    watchshop_form = WatchShopForm(instance=request.user.watchshop)
+
+    if request.method == 'POST':
+        user_form = UserFormForEdit(request.POST, instance=request.user)
+        watchshop_form = WatchShopForm(request.POST, request.FILES, instance=request.user.watchshop)
+
+        if user_form.is_valid() and watchshop_form.is_valid():
+            user_form.save()
+            watchshop_form.save()
+
+    return render(request, 'watchshop/account.html', {
+        'user_form': user_form,
+        'watchshop_form': watchshop_form
+    })
 
 
 @login_required(login_url='/watchshop/watch/')

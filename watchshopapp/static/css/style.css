@@ -8,6 +8,10 @@ body {
     background-color: #002b80;
 }
 
+.text-white {
+    color: white
+}
+
 .btn-red {
     color: white;
     background-color: #0044cc;
@@ -96,4 +100,8 @@ body {
 /* SIDEBAR - CONTENT */
 .content {
     padding: 0px 40px;
+}
+
+.content .card {
+    border: none;
 }
