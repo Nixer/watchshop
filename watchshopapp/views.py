@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from watchshopapp.forms import UserForm, WatchShopForm, UserFormForEdit, WatchForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-
+from watchshopapp.models import Watch
 
 # Create your views here.
 def home(request):
@@ -36,7 +36,10 @@ def watchshop_account(request):
 
 @login_required(login_url='/watchshop/watch/')
 def watchshop_watch(request):
-    return render(request, 'watchshop/watch.html', {})
+    watches = Watch.objects.filter(watchshop=request.user.watchshop).order_by("-id")
+    return render(request, 'watchshop/watch.html', {
+        "watches": watches
+    })
 
 
 @login_required(login_url='/watchshop/watch/')

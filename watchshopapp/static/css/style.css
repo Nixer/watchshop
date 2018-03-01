@@ -8,6 +8,10 @@ body {
     background-color: #002b80;
 }
 
+.bg-red {
+    background-color: #002b80;
+}
+
 .text-white {
     color: white
 }
@@ -104,4 +108,14 @@ body {
 
 .content .card {
     border: none;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td {
+    vertical-align: middle;
+}
+
+.table,
+.table > thead > tr > td {
+    border-color: #e0deeb;
 }
