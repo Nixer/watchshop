@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from watchshopapp.models import WatchShop
+from watchshopapp.models import WatchShop, Watch
 
 
 class UserForm(forms.ModelForm):
@@ -13,11 +13,19 @@ class UserForm(forms.ModelForm):
 
 class UserFormForEdit(forms.ModelForm):
     email = forms.CharField(max_length=100, required=True)
+
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
+
 
 class WatchShopForm(forms.ModelForm):
     class Meta:
         model = WatchShop
         fields = ('name', 'phone', 'address', 'logo')
+
+
+class WatchForm(forms.ModelForm):
+    class Meta:
+        model = Watch
+        exclude = ('watchshop',)

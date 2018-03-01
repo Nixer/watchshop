@@ -12,3 +12,13 @@ class WatchShop(models.Model):
 
     def __str__(self):
         return self.name
+
+class Watch(models.Model):
+    watchshop = models.ForeignKey(WatchShop, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+    short_description = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='watch_images/', blank=False)
+    price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
