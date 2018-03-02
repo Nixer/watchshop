@@ -32,5 +32,6 @@ urlpatterns = [
     path('watchshop/account/', views.watchshop_account, name='watchshop-account'),
     path('watchshop/watch/', views.watchshop_watch, name='watchshop-watch'),
     path('watchshop/watch/add/', views.watchshop_add_watch, name='watchshop-add-watch'),
+    path('watchshop/watch/edit/<int:watch_id>/', views.watchshop_edit_watch, name='watchshop-edit-watch'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,11 +8,6 @@
             </h4>
         </div>
         <div class="card-block">
-            <div class="text-right">
-                <a href="{% url 'watchshop-add-watch' %}" class="btn btn-red">Add watch</a>
-                <br/>
-                <br/>
-            </div>
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr class="bg-red text-white">
@@ -27,7 +22,7 @@
                     {% for watch in watches %}
                         <tr>
                             <td scope="row">{{ watch.id }}</td>
-                            <td><a href="#">{{ watch.name }}</a></td>
+                            <td><a href="{% url 'watchshop-edit-watch' watch.id %}">{{ watch.name }}</a></td>
                             <td>{{ watch.short_description }}</td>
                             <td>{{ watch.price }}$</td>
                             <td class="text-center"><img class="rounded-circle"
@@ -36,6 +31,11 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <div class="text-right">
+                <a href="{% url 'watchshop-add-watch' %}" class="btn btn-red">Add watch</a>
+                <br/>
+                <br/>
+            </div>
         </div>
     </div>
 {% endblock %}

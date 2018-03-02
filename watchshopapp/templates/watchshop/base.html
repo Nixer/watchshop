@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Watch shop{% endblock %}
 {% block sidebar %}
+{% url 'watchshop-watch' as watchshop_watch_url %}
+{% url 'watchshop-account' as watchshop_account_url %}
+
     <div class="text-center">
         <img class="rounded-circle" src="{{ MEDIA_URL }}{{ request.user.watchshop.logo }}" width="70" height="70">
         <br/>
@@ -10,9 +13,11 @@
     </div>
     <div class="list-group">
         <span class="text-uppercase">Panel</span>
-        <a href="{% url 'watchshop-watch' %}" class="list-group-item">Watches</a>
+        <a href="{% url 'watchshop-watch' %}"
+           class="list-group-item {% if request.path == watchshop_watch_url %} active {% endif %}">Watches</a>
         <span class="text-uppercase">Profile</span>
-        <a href="{% url 'watchshop-account' %}" class="list-group-item">Account profile</a>
+        <a href="{% url 'watchshop-account' %}"
+           class="list-group-item {% if request.path == watchshop_account_url %} active {% endif %}">Account profile</a>
     </div>
     <br/>
     <div class="text-center">

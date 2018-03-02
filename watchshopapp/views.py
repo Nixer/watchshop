@@ -34,7 +34,7 @@ def watchshop_account(request):
     })
 
 
-@login_required(login_url='/watchshop/watch/')
+@login_required(login_url='/watchshop/sign-in/')
 def watchshop_watch(request):
     watches = Watch.objects.filter(watchshop=request.user.watchshop).order_by("-id")
     return render(request, 'watchshop/watch.html', {
@@ -42,7 +42,7 @@ def watchshop_watch(request):
     })
 
 
-@login_required(login_url='/watchshop/watch/')
+@login_required(login_url='/watchshop/sign-in/')
 def watchshop_add_watch(request):
     form = WatchForm()
     if request.method == "POST":
@@ -56,6 +56,21 @@ def watchshop_add_watch(request):
     return render(request, 'watchshop/add_watch.html', {
         'form': form
     })
+
+
+@login_required(login_url='/watchshop/sign-in/')
+def watchshop_edit_watch(request, watch_id):
+    form = WatchForm(instance=Watch.objects.get(id=watch_id))
+    if request.method == "POST":
+        form = WatchForm(request.POST, request.FILES, instance=Watch.objects.get(id=watch_id))
+        if form.is_valid():
+            watch = form.save()
+            return redirect(watchshop_watch)
+
+    return render(request, 'watchshop/edit_watch.html', {
+        'form': form
+    })
+
 
 def watchshop_sign_up(request):
     user_form = UserForm()
