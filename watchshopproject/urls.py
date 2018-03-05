@@ -33,6 +33,9 @@ urlpatterns = [
     path('watchshop/watch/', views.watchshop_watch, name='watchshop-watch'),
     path('watchshop/watch/add/', views.watchshop_add_watch, name='watchshop-add-watch'),
     path('watchshop/watch/edit/<int:watch_id>/', views.watchshop_edit_watch, name='watchshop-edit-watch'),
+
+    #APIs
     path('api/client/watchshops/', apis.client_get_watchshops),
+    path('api/client/watchs/<int:watchshop_id>/', apis.client_get_watchs),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
