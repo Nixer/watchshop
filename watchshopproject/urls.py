@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+# from django.conf.urls import include
 from watchshopapp import views, apis
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
@@ -38,4 +39,8 @@ urlpatterns = [
     path('api/client/watchshops/', apis.client_get_watchshops),
     path('api/client/watchs/<int:watchshop_id>/', apis.client_get_watchs),
 
+    #Sign In / Sign Up / Sign Out
+    path('api/social/', include('rest_framework_social_oauth2.urls')),
+    # /convert-token/ (Sign In / Sign Up)
+    # /revoke-token/ (Sign Out)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
