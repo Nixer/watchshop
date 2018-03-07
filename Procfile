@@ -1,1 +1,1 @@
-web: gunicorn watchshopproject.wsgi --log-file - 
+web: gunicorn watchshopproject.wsgi --log-file -

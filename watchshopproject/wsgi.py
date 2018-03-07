@@ -10,7 +10,11 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "watchshopproject.settings")
 
 application = get_wsgi_application()
+
+# Whitenoise package for static files on Heroku
+application = DjangoWhiteNoise(application)

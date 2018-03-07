@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,8 +26,7 @@ SECRET_KEY = 'e!eh&a(yijbr0fl$-w(h3hcjpc_me&gj=ywfjv-hjv5@)s!zp8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['watchshopapp.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -131,6 +131,11 @@ LOGIN_REDIRECT_URL = '/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 AUTHENTICATION_BACKENDS = (
    'rest_framework_social_oauth2.backends.DjangoOAuth2',
