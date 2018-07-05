@@ -8,7 +8,7 @@ class WatchShop(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='watchshop_logo/', blank=False)
+    logo = models.ImageField(upload_to='watchshop_logo/', blank=True)
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class Watch(models.Model):
     watchshop = models.ForeignKey(WatchShop, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     short_description = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='watch_images/', blank=False)
+    image = models.ImageField(upload_to='watch_images/', blank=True)
     price = models.IntegerField(default=0)
 
     def __str__(self):
